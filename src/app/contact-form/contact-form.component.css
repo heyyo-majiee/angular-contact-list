@@ -1,0 +1,11 @@
+input.ng-valid {
+    border-left: green 4px solid;
+}
+input.ng-invalid {
+    border-left: red 4px solid;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

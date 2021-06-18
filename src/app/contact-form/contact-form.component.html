@@ -1,0 +1,56 @@
+<div class="card-body">
+    <h2 class="text-center"> CONTACT LIST</h2>
+    <div class="card card-body mb-3">
+        <form >
+
+            <div class="mb-3">
+
+                <label class="form-label">Name</label>
+                <input type="text" #nameRef="ngModel" maxlength="50" required class="form-control"
+                    placeholder="Enter Name" name="name" [(ngModel)]="updatedList.name">
+
+                <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!nameRef.errors.required">
+                        Please enter a name
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">E-mail</label>
+                <input type="email" #emailRef="ngModel" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                    required class="form-control" placeholder="Enter Email" name="email"
+                    [(ngModel)]="updatedList.email">
+
+                <div *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!emailRef.errors.required">
+                        Please enter an email
+                    </div>
+                    <div [hidden]="!emailRef.errors.pattern">
+                        Please enter a correct email
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number
+                </label>
+                <input type="number" #phoneRef="ngModel" required class="form-control" placeholder="Enter Phone Number"
+                    name="phone" [(ngModel)]="updatedList.phone">
+
+                <div *ngIf="phoneRef.errors && (phoneRef.dirty || phoneRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!phoneRef.errors.required">
+                        Please enter a phone number
+                    </div>
+                </div>
+            </div>
+
+            <button *ngIf="!isEdit" (click)="addNewContact(updatedList)" class="btn btn-dark btn-block">Add
+                Contact</button>
+
+            <button *ngIf="isEdit" (click)="updateContact()" class="btn btn-dark btn-block">Update Contact</button>
+        </form>
+    </div>
+</div>
